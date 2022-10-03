@@ -17,9 +17,9 @@ var logger = require('../other/logger');
         gameState.kingdoms = [{id:'1', name: "Polska"}, {id:'2', name: "Niemcy"}, {id:'3', name: "Francja"}, {id:'4', name: "Włochy"}, {id:'5', name: "Hiszpania"},
         {id:'6', name: "Austria"},{id:'7', name: "Grecja"},{id:'8', name: "Belgia"}];
         gameState.map = setKingdomsOnMap(map, gameState.kingdoms);
-
         return true;
     }
+
 
     function getGameState(): GameState {
         return gameState;

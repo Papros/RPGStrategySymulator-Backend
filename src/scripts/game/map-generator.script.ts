@@ -52,11 +52,13 @@ function generateDistrict(id: string, x: number, y: number): District {
 
 function emptyMap(size: {x: number, y: number}): District[] {
     let map: Array<District> = new Array<District>();
+    let id = 0;
 
-    for(let width = 0; width < size.x; width++) {
-        for(let hight = 0; hight < size.y; hight++) {
-            map.push(generateDistrict(`${width*hight+1}`, width, hight));
-        }
+    for(let hight = 0; hight < size.y; hight++) {
+      for(let width = 0; width < size.x; width++) {
+        id++;
+        map.push(generateDistrict(`${id}`, width, hight));
+      }
     }
 
     return map;
