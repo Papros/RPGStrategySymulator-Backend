@@ -1,3 +1,5 @@
+import { ResourceType } from '../../types/game-model/enums/resource.enum';
+import { TerrainType } from '../../types/game-model/enums/terrain.enum';
 import { District } from '../../types/game-model/world/district';
 import { Kingdom } from '../../types/game-model/world/kingdom';
 
@@ -42,11 +44,17 @@ function testMap(map: District[]): boolean {
     return true;
 }
 
-function generateDistrict(id: string, x: number, y: number): District {
+function generateDistrict(id: string, x: number, y: number, terrain: TerrainType, resource: ResourceType): District {
     return {
         id: id,
         kingdomID: '0',
         position: { x:x, y:y},
+        terrain: {
+            type: terrain,
+        },
+        resource: {
+            type: resource,
+        }
     }
 }
 
@@ -57,7 +65,9 @@ function emptyMap(size: {x: number, y: number}): District[] {
     for(let hight = 0; hight < size.y; hight++) {
       for(let width = 0; width < size.x; width++) {
         id++;
-        map.push(generateDistrict(`${id}`, width, hight));
+        let terrainType = TerrainType.FIELDS;
+        let resourceType = ResourceType.NOTHING;
+        map.push(generateDistrict(`${id}`, width, hight, terrainType, resourceType));
       }
     }
 

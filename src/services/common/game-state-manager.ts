@@ -11,7 +11,7 @@ var logger = require('../other/logger');
     }
     
     function loadLastGameState(): boolean {
-        let map  = generateMap({x:10, y:10});
+        let map  = generateMap({x:20, y:20});
         logger.log("Loading map...", "gameStateManager");
         gameState.pureMap = map;
         gameState.kingdoms = [{id:'1', name: "Polska"}, {id:'2', name: "Niemcy"}, {id:'3', name: "Francja"}, {id:'4', name: "Włochy"}, {id:'5', name: "Hiszpania"},
