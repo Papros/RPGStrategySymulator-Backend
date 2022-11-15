@@ -3,9 +3,9 @@ import { Request, Response } from 'express'
 
 import * as districtsService from '../services/game-data/districts.service'
 
-const getAll = async (req: Request, res: Response) => {
+const getAllDistricts = async (req: Request, res: Response) => {
   try {
-    const data = await districtsService.getAll()
+    const data = await districtsService.getAllDistricts()
 
     res.status(data.statusCode).send(data.body)
   } catch (e: any) {
@@ -13,10 +13,10 @@ const getAll = async (req: Request, res: Response) => {
   }
 }
 
-const getById = async (req: Request, res: Response) => {
-  const data = await districtsService.getById(req)
+const getDistrictById = async (req: Request, res: Response) => {
+  const data = await districtsService.getDistrictById(req)
 
   res.status(data.statusCode).json(data.body)
 }
 
-export { getAll, getById }
+export { getAllDistricts, getDistrictById }

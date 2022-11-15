@@ -4,8 +4,9 @@ import cors from 'cors'
 import * as middleware from './middleware'
 import districtsRouter from './routers/districts.router';
 import kingdomssRouter from './routers/kingdoms.router';
+import mapRouter from './routers/map.router';
 
-var stateManager = require('../src/services/common/game-state-manager');
+var stateManager = require('../src/services/common/game-state.service');
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'production'
@@ -26,6 +27,7 @@ app.use('/district', districtsRouter);
 app.use('/districts', districtsRouter);
 app.use('/kingdom', kingdomssRouter);
 app.use('/kingdoms', kingdomssRouter);
+app.use('/map', mapRouter);
 
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running on port ${PORT} (${ENV} enviroment)`);

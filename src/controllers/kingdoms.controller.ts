@@ -3,9 +3,9 @@ import { Request, Response } from 'express'
 
 import * as kingdomsService from '../services/game-data/kingdoms.service'
 
-const getAll = async (req: Request, res: Response) => {
+const getAllKingdoms = async (req: Request, res: Response) => {
   try {
-    const data = await kingdomsService.getAll()
+    const data = await kingdomsService.getAllKingdoms()
 
     res.status(data.statusCode).send(data.body)
   } catch (e: any) {
@@ -13,10 +13,10 @@ const getAll = async (req: Request, res: Response) => {
   }
 }
 
-const getById = async (req: Request, res: Response) => {
-  const data = await kingdomsService.getById(req)
+const getKingdomById = async (req: Request, res: Response) => {
+  const data = await kingdomsService.getKingdomById(req)
 
   res.status(data.statusCode).json(data.body)
 }
 
-export { getAll, getById }
+export { getAllKingdoms, getKingdomById }

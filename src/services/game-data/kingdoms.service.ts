@@ -1,12 +1,12 @@
 
+import { Kingdom } from '@app/model/game-model/world';
+import { ServiceAPIResponse } from '@app/model/server';
 import { Request } from 'express'
-import { ServiceAPIResponse } from '../../types/server/service-response'
-import { Kingdom } from '../../types/game-model/world/kingdom'
 
-var stateManager = require('../common/game-state-manager');
-var logger = require('../other/logger');
+var stateManager = require('../common/game-state.service');
+var logger = require('../other/logger.service');
 
-const getAll = async (): Promise<ServiceAPIResponse<Kingdom[]>> => {
+const getAllKingdoms = async (): Promise<ServiceAPIResponse<Kingdom[]>> => {
   /* fetch data from db here */
   logger.log('getAll()', 'Kingdoms route');
   let kingdoms = stateManager.getGameState().kingdoms;
@@ -16,7 +16,7 @@ const getAll = async (): Promise<ServiceAPIResponse<Kingdom[]>> => {
   }
 }
 
-const getById = async (req: Request): Promise<ServiceAPIResponse<Kingdom>> => {
+const getKingdomById = async (req: Request): Promise<ServiceAPIResponse<Kingdom>> => {
   /* fetch data from db here */
   /* id: req.params?.id */
   const id = req.params?.id;
@@ -41,4 +41,4 @@ const getById = async (req: Request): Promise<ServiceAPIResponse<Kingdom>> => {
   }
 }
 
-export { getAll, getById }
+export { getAllKingdoms, getKingdomById }

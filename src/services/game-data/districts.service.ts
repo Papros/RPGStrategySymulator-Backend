@@ -1,11 +1,10 @@
 
-import { Request } from 'express'
-import { ServiceAPIResponse } from '../../types/server/service-response'
-import { District } from '../../types/game-model/world/district'
-import { TerrainType } from '../../types/game-model/enums/terrain.enum';
-import { ResourceType } from '../../types/game-model/enums/resource.enum';
+import { District } from '@app/model/game-model/world';
+import { ServiceAPIResponse } from '@app/model/server';
+import { Request } from 'express';
+import { ResourceType, TerrainType } from './../../model/game-model/index';
 
-var stateManager = require('../common/game-state-manager');
+var stateManager = require('../common/game-state.service');
 
 const blankDistrict = {
   id: '0',
@@ -15,7 +14,7 @@ const blankDistrict = {
   kingdomID: '1',
 };
 
-const getAll = async (): Promise<ServiceAPIResponse<District[]>> => {
+const getAllDistricts = async (): Promise<ServiceAPIResponse<District[]>> => {
   /* fetch data from db here */
   let districts:District[] = stateManager.getGameState().map;
 
@@ -25,7 +24,7 @@ const getAll = async (): Promise<ServiceAPIResponse<District[]>> => {
   }
 }
 
-const getById = async (req: Request): Promise<ServiceAPIResponse<District>> => {
+const getDistrictById = async (req: Request): Promise<ServiceAPIResponse<District>> => {
   /* fetch data from db here */
   /* id: req.params?.id */
   let districts:District[] = stateManager.getGameState().map;
@@ -38,4 +37,4 @@ const getById = async (req: Request): Promise<ServiceAPIResponse<District>> => {
   }
 }
 
-export { getAll, getById }
+export { getAllDistricts, getDistrictById }

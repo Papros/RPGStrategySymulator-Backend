@@ -1,4 +1,4 @@
-import { ProtectionLevel } from "../enums/protection-level.enum";
+import { ProtectionLevel } from "@app/model/server";
 
 export interface Attribute {
     name: string; // Attribute name

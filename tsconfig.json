@@ -1,14 +1,54 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
     "target": "es5",                          
     "module": "commonjs",                    
     "lib": ["es6"],                     
-    "allowJs": true,
-    "outDir": "build",                          
+    "allowJs": false,                        
     "rootDir": "src",
     "strict": true,         
     "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "types": [
+      "node",
+    ],
+    "paths": {
+      "@app/common": ["src/common/index"],
+      "@app/controllers": ["src/controllers/index"],
+      "@app/middleware": ["src/middleware/index"],
+      "@app/routers": ["src/routers/index"],
+      "@app/scripts/game": ["src/scripts/game/index"],
+      "@app/services/common": ["src/services/common/index"],
+      "@app/services/game-data": ["src/services/game-data/index"],
+      "@app/services/other": ["src/services/other/index"],
+      "@app/model/game-model": ["src/model/game-model/index"],
+      "@app/model/game-model/basic": ["src/model/game-model/basic/index"],
+      "@app/model/game-model/complex": ["src/model/game-model/complex/index"],
+      "@app/model/game-model/enums": ["src/model/game-model/enums/index"],
+      "@app/model/game-model/world": ["src/model/game-model/world/index"],
+      "@app/model/server": ["src/model/server/index"],
+      "@app/model/server/enums": ["src/model/server/enums/index"],
+    }
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+      "node_modules",     
+      "dist/**/*",
+      "build/**/*"
+  ]
 }

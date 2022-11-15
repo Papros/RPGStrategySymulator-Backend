@@ -1,5 +1,4 @@
-import { ResourceType } from "../enums/resource.enum";
-import { TerrainType } from "../enums/terrain.enum";
+import { TerrainType, ResourceType } from "../enums";
 
 export interface District {
     id: string;
