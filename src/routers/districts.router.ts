@@ -1,13 +1,13 @@
-import express from 'express'
+import express from 'express';
 
-import * as districtsController from '../controllers/districts.controller'
+import * as districtsController from '../controllers/districts.controller';
 
-const router = express.Router()
+const router = express.Router();
 
 /* GET districts */
-router.get('/', districtsController.getAll)
+router.get('/', districtsController.getAll);
 
 /* GET districts by id */
-router.get('/:id', districtsController.getById)
+router.get('/:id', districtsController.getById);
 
-export { router as default }
+export { router as default };

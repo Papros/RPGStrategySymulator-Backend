@@ -1,14 +1,10 @@
-import { ResourceType } from "../enums/resource.enum";
-import { TerrainType } from "../enums/terrain.enum";
+import { IResourceSource } from './resource-source';
+import { ITerrainState } from './terrain-state';
 
-export interface District {
-    id: string;
-    kingdomID: string;
-    terrain: {
-        type: TerrainType,
-    },
-    resource: {
-        type: ResourceType,
-    }
-    position: { x: number, y: number}; 
+export interface IDistrict {
+  id: string;
+  kingdomID: string;
+  terrain: ITerrainState;
+  resources: IResourceSource[];
+  position: { x: number; y: number };
 }

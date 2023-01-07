@@ -1,8 +1,8 @@
-import { District } from "../world/district";
-import { Kingdom } from "../world/kingdom";
+import { IDistrict } from '../world/district';
+import { IKingdom } from '../world/kingdom';
 
 export interface GameState {
-    map: District[];
-    pureMap: District[];
-    kingdoms: Kingdom[];
+  map: IDistrict[];
+  pureMap: IDistrict[];
+  kingdoms: IKingdom[];
 }

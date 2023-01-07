@@ -1,4 +1,4 @@
-export interface Lord {
-    id: string; // Lord unique ID
-    name: string; //Lord name
+export interface ILord {
+  id: string; // Lord unique ID
+  name: string; //Lord name
 }
