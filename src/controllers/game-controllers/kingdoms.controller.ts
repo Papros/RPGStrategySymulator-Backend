@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import * as kingdomsService from '../services/game-data/kingdoms.service';
+import * as kingdomsService from '../../services/game-data/kingdoms.service';
 
 const getAll = async (req: Request, res: Response) => {
   try {

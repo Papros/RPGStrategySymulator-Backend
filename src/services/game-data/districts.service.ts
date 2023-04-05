@@ -1,7 +1,7 @@
 import { Request } from 'express';
-import { ServiceAPIResponse } from '../../types/server/service-response';
-import { IDistrict } from '../../types/game-model/world/district';
-import { DefaultValue } from '../../types/game-model/default-value';
+import { ServiceAPIResponse } from '../../types/server/service-response.interface';
+import { IDistrict } from '../../types/game-model/world/district.interface';
+import { DefaultValue } from '../../types/game-model/default-value.dictionary';
 
 var stateManager = require('../common/game-state-manager');
 

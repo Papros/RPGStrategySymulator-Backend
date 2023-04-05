@@ -1,9 +1,9 @@
-import { DefaultValue } from '../../../../types/game-model/default-value';
-import { ICreationRules } from '../../../../types/game-model/world/creation-rules';
-import { IDistrict } from '../../../../types/game-model/world/district';
-import { IKingdom } from '../../../../types/game-model/world/kingdom';
-import { IResourceSource } from '../../../../types/game-model/world/resource-source';
-import { ITerrainState } from '../../../../types/game-model/world/terrain-state';
+import { DefaultValue } from '../../../../types/game-model/default-value.dictionary';
+import { ICreationRules } from '../../../../types/game-model/world/creation-rules.interface';
+import { IDistrict } from '../../../../types/game-model/world/district.interface';
+import { IKingdom } from '../../../../types/game-model/world/kingdom.interface';
+import { IResourceSource } from '../../../../types/game-model/world/resource-source.interface';
+import { ITerrainState } from '../../../../types/game-model/world/terrain-state.interface';
 import { IMapGenerator } from '../interface/map-generator.interface';
 
 export class BasicMapGenerator implements IMapGenerator {
@@ -30,8 +30,8 @@ export class BasicMapGenerator implements IMapGenerator {
 
       while (!playerSet) {
         let districtId = this.placeKingdomRandomly(map);
-        if (map[districtId].kingdomID == '0') {
-          map[districtId].kingdomID = kingdom.id;
+        if (map[districtId].owner.kingdomID == '0') {
+          map[districtId].owner.kingdomID = kingdom.id;
           playerSet = true;
         }
       }
@@ -51,10 +51,17 @@ export class BasicMapGenerator implements IMapGenerator {
   private generateDistrict(id: string, x: number, y: number, terrain: ITerrainState, resource: IResourceSource[]): IDistrict {
     return {
       id: id,
-      kingdomID: '0',
+      owner: {
+        kingdomID: '0',
+        partyID: ''
+      },
       position: { x: x, y: y },
       terrain: terrain,
-      resources: resource
+      resources: resource,
+      city: {
+        population: 0,
+        buildings: []
+      }
     };
   }
 

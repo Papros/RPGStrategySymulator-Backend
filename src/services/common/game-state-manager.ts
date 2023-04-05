@@ -1,17 +1,20 @@
-import { GameState } from '../../types/game-model/complex/game-object';
+import { IGameState } from '../../types/game-model/complex/game-object.interface';
 import { BasicMapGenerator } from '../../scripts/game/map-generators/basic-map-generator/map-generator.script';
-import { IDistrict } from '../../types/game-model/world/district';
-import { CreationRulesAmountValue, CreationRulesSizeValue, ICreationRules } from '../../types/game-model/world/creation-rules';
+import { IDistrict } from '../../types/game-model/world/district.interface';
+import { CreationRulesAmountValue, CreationRulesSizeValue, ICreationRules } from '../../types/game-model/world/creation-rules.interface';
 import { IMapGenerator } from '../../scripts/game/map-generators/interface/map-generator.interface';
 import { ProceduralMapGenerator } from '../../scripts/game/map-generators/procedural-map-generator/procedural-map-generator.script';
-import { DefaultValue } from '../../types/game-model/default-value';
+import { DefaultValue } from '../../types/game-model/default-value.dictionary';
 
 var logger = require('../other/logger');
 
-let gameState: GameState = {
+let gameState: IGameState = {
   map: [],
-  pureMap: [],
-  kingdoms: []
+  kingdoms: [],
+  general: {
+    pureMap: [],
+    creationRules: DefaultValue.CreationRules
+  }
 };
 
 function loadLastGameState(): boolean {
@@ -24,22 +27,22 @@ function loadLastGameState(): boolean {
 
   let map = generator.generateMap(rules);
   logger.log('Loading map...', 'gameStateManager');
-  gameState.pureMap = map;
+  gameState.general.pureMap = map;
   gameState.kingdoms = [
-    { id: '1', name: 'Polska' },
-    { id: '2', name: 'Niemcy' },
-    { id: '3', name: 'Francja' },
-    { id: '4', name: 'Włochy' },
-    { id: '5', name: 'Hiszpania' },
-    { id: '6', name: 'Austria' },
-    { id: '7', name: 'Grecja' },
-    { id: '8', name: 'Belgia' }
+    { id: '1', partyID: '', name: 'Polska' },
+    { id: '2', partyID: '', name: 'Niemcy' },
+    { id: '3', partyID: '', name: 'Francja' },
+    { id: '4', partyID: '', name: 'Włochy' },
+    { id: '5', partyID: '', name: 'Hiszpania' },
+    { id: '6', partyID: '', name: 'Austria' },
+    { id: '7', partyID: '', name: 'Grecja' },
+    { id: '8', partyID: '', name: 'Belgia' }
   ];
   gameState.map = generator.setKingdomsOnMap(map, gameState.kingdoms);
   return true;
 }
 
-function getGameState(): GameState {
+function getGameState(): IGameState {
   return gameState;
 }
 
@@ -47,15 +50,18 @@ function saveGameStateInFile(): boolean {
   return true;
 }
 
-function loadGameStateFromFile(): GameState {
+function loadGameStateFromFile(): IGameState {
   return {
     map: [],
-    pureMap: [],
-    kingdoms: []
+    kingdoms: [],
+    general: {
+      pureMap: [],
+      creationRules: DefaultValue.CreationRules
+    }
   };
 }
 
-function testGameStateSanity(state: GameState): boolean {
+function testGameStateSanity(state: IGameState): boolean {
   return true;
 }
 

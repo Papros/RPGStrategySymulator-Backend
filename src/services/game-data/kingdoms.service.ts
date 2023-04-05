@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import { ServiceAPIResponse } from '../../types/server/service-response';
-import { IKingdom } from '../../types/game-model/world/kingdom';
+import { ServiceAPIResponse } from '../../types/server/service-response.interface';
+import { IKingdom } from '../../types/game-model/world/kingdom.interface';
 
 var stateManager = require('../common/game-state-manager');
 var logger = require('../other/logger');
@@ -33,7 +33,8 @@ const getById = async (req: Request): Promise<ServiceAPIResponse<IKingdom>> => {
       statusCode: 404,
       body: {
         id: '',
-        name: ''
+        name: '',
+        partyID: ''
       }
     };
   }

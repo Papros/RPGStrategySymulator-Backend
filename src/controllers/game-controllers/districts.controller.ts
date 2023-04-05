@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import * as districtsService from '../services/game-data/districts.service';
+import * as districtsService from '../../services/game-data/districts.service';
 
 const getAll = async (req: Request, res: Response) => {
   try {

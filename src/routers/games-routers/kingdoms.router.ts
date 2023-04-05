@@ -1,6 +1,6 @@
 import express from 'express';
 
-import * as kingdomsController from '../controllers/kingdoms.controller';
+import * as kingdomsController from '../../controllers/game-controllers/kingdoms.controller';
 
 const router = express.Router();
 
