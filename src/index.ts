@@ -2,9 +2,9 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 
 import * as middleware from './middleware';
-import districtsRouter from './routers/districts.router';
-import kingdomsRouter from './routers/kingdoms.router';
-import mapRouter from './routers/map.router';
+import districtsRouter from './routers/games-routers/districts.router';
+import kingdomsRouter from './routers/games-routers/kingdoms.router';
+import mapRouter from './routers/games-routers/map.router';
 const bodyParser = require('body-parser');
 
 var stateManager = require('../src/services/common/game-state-manager');

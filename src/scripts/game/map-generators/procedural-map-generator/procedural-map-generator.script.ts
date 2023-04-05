@@ -1,11 +1,11 @@
-import { DefaultValue } from '../../../../types/game-model/default-value';
+import { DefaultValue } from '../../../../types/game-model/default-value.dictionary';
 import { ResourceType } from '../../../../types/game-model/enums/resource.enum';
 import { TerrainType } from '../../../../types/game-model/enums/terrain.enum';
-import { ICreationRules } from '../../../../types/game-model/world/creation-rules';
-import { IDistrict } from '../../../../types/game-model/world/district';
-import { IKingdom } from '../../../../types/game-model/world/kingdom';
-import { IResourceSource } from '../../../../types/game-model/world/resource-source';
-import { ITerrainState } from '../../../../types/game-model/world/terrain-state';
+import { ICreationRules } from '../../../../types/game-model/world/creation-rules.interface';
+import { IDistrict } from '../../../../types/game-model/world/district.interface';
+import { IKingdom } from '../../../../types/game-model/world/kingdom.interface';
+import { IResourceSource } from '../../../../types/game-model/world/resource-source.interface';
+import { ITerrainState } from '../../../../types/game-model/world/terrain-state.interface';
 import { IMapGenerator } from '../interface/map-generator.interface';
 import { createNoise2D, NoiseFunction2D } from 'simplex-noise';
 import Alea from 'alea';
@@ -31,8 +31,8 @@ export class ProceduralMapGenerator implements IMapGenerator {
 
       while (!playerSet) {
         let districtId = this.placeKingdomRandomly(map);
-        if (map[districtId].kingdomID == '0' && map[districtId].terrain.type != TerrainType.SEA) {
-          map[districtId].kingdomID = kingdom.id;
+        if (map[districtId].owner.kingdomID == '0' && map[districtId].terrain.type != TerrainType.SEA) {
+          map[districtId].owner.kingdomID = kingdom.id;
           playerSet = true;
         }
       }
@@ -73,10 +73,17 @@ export class ProceduralMapGenerator implements IMapGenerator {
 
         const newDistrict = {
           id: `${id}`,
-          kingdomID: '0',
           position: { x: width, y: hight },
           terrain: this.getTerrain(rules, noiseValueXY),
-          resources: this.getResource(rules, noiseValueXY)
+          resources: this.getResource(rules, noiseValueXY),
+          owner: {
+            kingdomID: '0',
+            partyID: '0'
+          },
+          city: {
+            population: 1,
+            buildings: []
+          }
         };
 
         map.push(newDistrict);

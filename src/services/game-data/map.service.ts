@@ -1,10 +1,10 @@
 import { Request } from 'express';
-import { ServiceAPIResponse } from '../../types/server/service-response';
-import { IDistrict } from '../../types/game-model/world/district';
+import { ServiceAPIResponse } from '../../types/server/service-response.interface';
+import { IDistrict } from '../../types/game-model/world/district.interface';
 import { IMapGenerator } from '../../scripts/game/map-generators/interface/map-generator.interface';
 import { ProceduralMapGenerator } from '../../scripts/game/map-generators/procedural-map-generator/procedural-map-generator.script';
-import { ICreationRules, CreationRulesAmountValue, CreationRulesSizeValue } from '../../types/game-model/world/creation-rules';
-import { DefaultValue } from '../../types/game-model/default-value';
+import { ICreationRules, CreationRulesAmountValue, CreationRulesSizeValue } from '../../types/game-model/world/creation-rules.interface';
+import { DefaultValue } from '../../types/game-model/default-value.dictionary';
 
 var logger = require('../other/logger');
 
@@ -41,14 +41,14 @@ const generateMap = async (req: Request): Promise<ServiceAPIResponse<IDistrict[]
   let map = generator.generateMap(rules);
   logger.log('Loading map...', 'gameStateManager');
   let kingdoms = [
-    { id: '1', name: 'Polska' },
-    { id: '2', name: 'Niemcy' },
-    { id: '3', name: 'Francja' },
-    { id: '4', name: 'Włochy' },
-    { id: '5', name: 'Hiszpania' },
-    { id: '6', name: 'Austria' },
-    { id: '7', name: 'Grecja' },
-    { id: '8', name: 'Belgia' }
+    { id: '1', partyID: '', name: 'Polska' },
+    { id: '2', partyID: '', name: 'Niemcy' },
+    { id: '3', partyID: '', name: 'Francja' },
+    { id: '4', partyID: '', name: 'Włochy' },
+    { id: '5', partyID: '', name: 'Hiszpania' },
+    { id: '6', partyID: '', name: 'Austria' },
+    { id: '7', partyID: '', name: 'Grecja' },
+    { id: '8', partyID: '', name: 'Belgia' }
   ];
   map = generator.setKingdomsOnMap(map, kingdoms);
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import * as mapService from '../services/game-data/map.service';
+import * as mapService from '../../services/game-data/map.service';
 
 const generateBySeed = async (req: Request, res: Response) => {
   const data = await mapService.generateMap(req);

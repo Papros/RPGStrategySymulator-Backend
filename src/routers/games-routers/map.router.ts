@@ -1,6 +1,6 @@
 import express from 'express';
 
-import * as mapController from '../controllers/map.controller';
+import * as mapController from '../../controllers/game-controllers/map.controller';
 
 const router = express.Router();
 

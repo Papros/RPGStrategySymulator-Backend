@@ -1,6 +1,6 @@
 import express from 'express';
 
-import * as districtsController from '../controllers/districts.controller';
+import * as districtsController from '../../controllers/game-controllers/districts.controller';
 
 const router = express.Router();
 
